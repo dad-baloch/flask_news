@@ -67,3 +67,6 @@ python app.py
 
 Open your web browser and navigate to `http://127.0.0.1:5000` to view the application.
 
+<img width="1359" height="653" alt="navbar_SS" src="https://github.com/user-attachments/assets/bba4d5a6-7e3e-4a35-a1b0-f209a1b0af16" />
+<img width="1359" height="653" alt="articles_SS" src="https://github.com/user-attachments/assets/57df4b7b-6c44-46d6-8b4f-95751e3b0f42" />
+<img width="1359" height="653" alt="footer_SS" src="https://github.com/user-attachments/assets/63dec358-c237-4405-a09c-1889856fdfea" />
