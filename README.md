@@ -188,8 +188,9 @@ flask_news/
 - Open the browser console (F12) to see any error messages
 
 ## 🎨 Screenshots
+<img width="1363" height="653" alt="Screenshot from 2026-01-04 02-29-54" src="https://github.com/user-attachments/assets/5ba230d3-3e36-4aeb-8434-dfe5231cc4e0" />
+<img width="1363" height="653" alt="Screenshot from 2026-01-04 02-29-32" src="https://github.com/user-attachments/assets/23c58f76-5ea8-4742-9236-d6aa73a1c37a" />
 
-*Add your application screenshots here to showcase the UI*
 
 ## 📝 License
 
