@@ -39,42 +39,55 @@ function App() {
   }, []);
 
   return (
-    <>
+    <div className="app-wrapper">
       <NavBar activeQuery={query} onCategorySelect={fetchArticles} onSearch={fetchArticles} />
 
-      <Container className="my-4">
-        <h1 className="my-4 text-center">Welcome to Daad News</h1>
+      <Container className="main-content py-4">
+        <div className="header-section text-center mb-4">
+          <h1 className="display-5 fw-bold text-gradient mb-2">Daad News</h1>
+          <p className="lead text-muted">Your trusted source for breaking news and stories</p>
+        </div>
 
         {error && (
-          <Alert variant="danger" className="error-banner">
+          <Alert variant="danger" className="error-alert shadow-sm">
+            <i className="bi bi-exclamation-triangle-fill me-2"></i>
             {error}
           </Alert>
         )}
 
         {loading ? (
-          <div className="d-flex justify-content-center py-5">
-            <Spinner animation="border" role="status">
+          <div className="loading-container text-center py-5">
+            <Spinner animation="border" variant="primary" role="status">
               <span className="visually-hidden">Loading...</span>
             </Spinner>
+            <p className="mt-3 text-muted">Loading news...</p>
           </div>
         ) : articles.length === 0 ? (
-          <div className="text-center py-5">
-            <p className="lead">No results found for "{query}".</p>
-            <p className="text-muted">Try another search or browse the categories in the navbar.</p>
+          <div className="empty-state text-center py-5">
+            <div className="empty-icon mb-3">📰</div>
+            <p className="lead mb-2">No results found for "{query}"</p>
+            <p className="text-muted">Try another search or browse the categories above</p>
           </div>
         ) : (
-          <Row>
-            {articles.map((article, index) => (
-              <Col md={6} key={`${article.url}-${index}`}>
-                <ArticleCard article={article} />
-              </Col>
-            ))}
-          </Row>
+          <>
+            <div className="results-header mb-3">
+              <small className="text-muted">
+                Showing {articles.length} articles for <strong>{query}</strong>
+              </small>
+            </div>
+            <Row className="g-4">
+              {articles.map((article, index) => (
+                <Col xs={12} md={6} lg={4} key={`${article.url}-${index}`}>
+                  <ArticleCard article={article} />
+                </Col>
+              ))}
+            </Row>
+          </>
         )}
       </Container>
 
       <Footer />
-    </>
+    </div>
   );
 }
 

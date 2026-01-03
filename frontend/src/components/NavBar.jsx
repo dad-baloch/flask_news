@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { Container, Navbar, Nav, Form, InputGroup, Button } from "react-bootstrap";
 
 const categories = [
-    "latest",
+    "Latest",
     "US",
     "Pakistan",
     "Baloch",
@@ -24,53 +25,39 @@ export function NavBar({ activeQuery = "latest", onCategorySelect, onSearch }) {
     };
 
     return (
-        <>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
-                <div className="container-fluid">
-                    <span className="navbar-brand fw-semibold">Daad-News</span>
-                    <button
-                        className="navbar-toggler"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation"
-                    >
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            {categories.map((cat) => (
-                                <li className="nav-item" key={cat}>
-                                    <button
-                                        type="button"
-                                        className={`nav-link btn btn-link ${activeQuery.toLowerCase() === cat.toLowerCase() ? "active" : ""}`}
-                                        onClick={() => handleCategory(cat)}
-                                    >
-                                        {cat}
-                                    </button>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-
-            <form className="d-flex mt-3" role="search" onSubmit={handleSubmit}>
-                <input
-                    className="form-control me-2"
-                    type="text"
-                    name="query"
-                    placeholder="Search"
-                    aria-label="Search"
-                    value={term}
-                    onChange={(e) => setTerm(e.target.value)}
-                />
-                <button id="search-btn" className="btn btn-primary" type="submit">
-                    Search
-                </button>
-            </form>
-        </>
+        <Navbar bg="dark" variant="dark" expand="lg" className="navbar-custom shadow-sm sticky-top">
+            <Container>
+                <Navbar.Brand className="fw-bold fs-4 brand-text">📰 Daad News</Navbar.Brand>
+                <Navbar.Toggle aria-controls="navbar-main" />
+                <Navbar.Collapse id="navbar-main">
+                    <Nav className="me-auto">
+                        {categories.map((cat) => (
+                            <Nav.Link
+                                key={cat}
+                                className={activeQuery.toLowerCase() === cat.toLowerCase() ? "active fw-semibold" : ""}
+                                onClick={() => handleCategory(cat)}
+                            >
+                                {cat}
+                            </Nav.Link>
+                        ))}
+                    </Nav>
+                    <Form className="d-flex mt-2 mt-lg-0" role="search" onSubmit={handleSubmit}>
+                        <InputGroup>
+                            <Form.Control
+                                type="text"
+                                placeholder="Search news..."
+                                aria-label="Search"
+                                value={term}
+                                onChange={(e) => setTerm(e.target.value)}
+                                className="search-input"
+                            />
+                            <Button variant="outline-light" type="submit">
+                                🔍
+                            </Button>
+                        </InputGroup>
+                    </Form>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
     );
 }
